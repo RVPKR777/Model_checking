@@ -1,7 +1,6 @@
 # Model Checking and Verification of train dispatch system
 
-## Submitted To:
-### Professor: Dr. Jamal Bentahar
+## Submitted To: Dr. Jamal Bentahar
 
 ## Team Information:
 
