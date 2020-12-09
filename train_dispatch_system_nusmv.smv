@@ -1,0 +1,110 @@
+MODULE main
+VAR
+state: {s0,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11};
+
+start : boolean;
+station_and_train_details : boolean;
+train_type: boolean;
+passenger_train: boolean;
+dispatch_passenger_train: boolean;
+dispatch_finish: boolean;
+goods_train: boolean;
+dispatch_goods_train: boolean;
+notifications: boolean;
+target_station: boolean;
+other_train: boolean;
+end: boolean;
+dispatch_passenger_call: boolean;
+dispatch_goods_call: boolean;
+get_notifications_call: boolean;
+
+ASSIGN
+
+init(state):=s0;
+init(start):= TRUE;
+init(station_and_train_details):= FALSE;
+init(train_type):= FALSE;
+init(passenger_train):= FALSE;
+init(dispatch_passenger_train):= FALSE;
+init(dispatch_finish):= FALSE;
+init(goods_train):= FALSE;
+init(dispatch_goods_train):= FALSE;
+init(notifications):= FALSE;
+init(target_station):= FALSE;
+init(end):= FALSE;
+init(dispatch_passenger_call):= FALSE;
+init(dispatch_goods_call):= FALSE;
+init(get_notifications_call):= FALSE;
+
+
+next(state):=case
+             state=s0: s1;
+			 state=s1: {s2,s11};
+			 state=s2: {s3,s4,s5};
+			 state=s3: s6;
+			 state=s4: s8;
+			 state=s5: s10;			 
+			 state=s6: s7;
+			 state=s7: s9;			 
+			 state=s8: s7;
+			 state=s9: s10;
+			 state=s10: s0;
+			 state=s11: s10;
+			 TRUE: state;
+esac;
+
+next(start):=case
+             next(state)=s1: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(station_and_train_details):=case
+             next(state)=s2|next(state)=s11: TRUE;
+             TRUE:FALSE;
+esac;
+
+
+next(train_type):=case
+             next(state)=s3|next(state)=s4|next(state)=s4: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(passenger_train):=case
+             next(state)=s6: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(dispatch_passenger_train):=case
+             next(state)=s7: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(goods_train):=case
+             next(state)=s8: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(dispatch_goods_train):=case
+             next(state)=s7: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(dispatch_finish):=case
+             next(state)=s9: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(notifications):=case
+             next(state)=s10: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(target_station):=case
+             next(state)=s10: TRUE;
+             TRUE:FALSE;
+esac;
+
+next(end):=case
+             next(state)=s0: TRUE;
+             TRUE:FALSE;
+esac;
