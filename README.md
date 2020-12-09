@@ -37,3 +37,29 @@ manual intervention to keep a check.<br />
 1- UPPAAL<br />
 2- NuSMV<br />
 3- Spin and Promela<br />
+
+## UPPAAL : Executing
+1- Install UPPAAL<br />
+2- Clone the project<br />
+3- Open the .xml file with UPPAAL<br />
+
+## NUSMV : Executing
+1- Download Nusmv and add it to the environment variables<br />
+2- execute the folling commands<br />
+read_model -i path<br />
+flatten_hierarchy<br />
+encode_variables<br />
+build_model<br />
+pick_state<br />
+simulate -p n<br />
+check_ltlspec -p path<br />
+check_ctlspec -p path<br />
+3- Based on the requirement execute the necessary commands<br />
+
+## Spin and promela : Executing
+1- Install spin<br />
+2- Install GCC executor<br />
+3- Install dot<br />
+4- Install ISpin<br />
+5- Add all these to environment variables<br />
+5- In ISpin open the promela file and simulate it.<br />
